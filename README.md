@@ -1,7 +1,9 @@
 # surge
 # QX转换SURGE
 qx相关的覆写配置转为surge模块。使能模块后，在qx链接的最后加上qx再导入
-https://raw.githubusercontent.com/Joee-D/surge/main/module/qx2surge.sgmodule
+https://raw.githubusercontent.com/Joee-D/surge/main/module/qx2surge.sgmodule  
+之后就可以导入使用这些覆写：  
+https://github.com/RuCu6/QuanX/tree/main/Rewrites
 # 微博去广告
 ## 方式1：
 https://raw.githubusercontent.com/Joee-D/surge/main/module/weibo.sgmodule
