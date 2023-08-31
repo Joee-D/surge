@@ -44,7 +44,7 @@ let newDesc = "#!desc= " + req.match(/.+\/(.+)\.(conf|js|snippet)/)?.[1] || "无
           break;
         case "script-":
           if (x.match("echo")) {
-              $notification.post("不支持这条规则转换,已跳过", "", `${x}`);
+              /$notification.post("不支持这条规则转换,已跳过", "", `${x}`);/
           }
           z[y - 1]?.match("#") && script.push(z[y - 1]);
           let proto = x.match("proto.js") ? ",binary-body-mode=1" : "";
