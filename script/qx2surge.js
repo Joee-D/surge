@@ -17,6 +17,8 @@ $task.fetch                                    $httpClient.post
 
 let req = $request.url.replace(/qx$/, "");
 let newName = "#!name= " + req.match(/.+\/(.+)\.(conf|js|snippet)/)?.[1] || "无名";
+let newDesc = "#!desc= " + req.match(/.+\/(.+)\.(conf|js|snippet)/)?.[1] || "无名";
+
 !(async () => {
   let body = await http(req);
 
@@ -30,10 +32,16 @@ let newName = "#!name= " + req.match(/.+\/(.+)\.(conf|js|snippet)/)?.[1] || "无
 
   body.forEach((x, y, z) => {
     let type = x.match(
-      /script-|enabled=|reject|echo-response|\-header|hostname|url\s(302|307)|\s(request|response)-body/
+      /#!name|#!desc|script-|enabled=|reject|echo-response|\-header|hostname|url\s(302|307)|\s(request|response)-body/
     )?.[0];
     if (type) {
       switch (type) {
+        case "#!name":
+          newName = x;
+          break;
+        case "#!desc":
+          newDesc = x;
+          break;
         case "script-":
           if (x.match("echo")) {
               $notification.post("不支持这条规则转换,已跳过", "", `${x}`);
@@ -144,6 +152,7 @@ let newName = "#!name= " + req.match(/.+\/(.+)\.(conf|js|snippet)/)?.[1] || "无
   MapLocal = (MapLocal[0] || "") && `[MapLocal]\n${MapLocal.join("\n")}`;
 
   body = `${newName}
+${newDesc}
 
 ${script}
 ${URLRewrite}
