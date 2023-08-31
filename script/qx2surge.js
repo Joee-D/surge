@@ -65,7 +65,7 @@ let newName = "#!name= " + req.match(/.+\/(.+)\.(conf|js|snippet)/)?.[1] || "无
           if (jct === "reject-200") {
             z[y - 1]?.match("#") && MapLocal.push(z[y - 1]);
             MapLocal.push(
-              `${url} data="https://raw.githubusercontent.com/mieqq/mieqq/master/reject-200.txt"`
+              `${url} data="https://raw.githubusercontent.com/Joee-D/surge/main/reject-200.txt"`
             );
             break;
           }
@@ -78,6 +78,14 @@ let newName = "#!name= " + req.match(/.+\/(.+)\.(conf|js|snippet)/)?.[1] || "无
             break;
           }
 
+          if (jct === "reject-dict") {
+            z[y - 1]?.match("#") && MapLocal.push(z[y - 1]);
+            MapLocal.push(
+              `${url} data="https://raw.githubusercontent.com/Joee-D/surge/main/reject-dict.json"`
+            );
+            break;
+          }
+          
           z[y - 1]?.match("#") && URLRewrite.push(z[y - 1]);
           URLRewrite.push(x.replace(/(\^?http[^\s]+).+/, "$1 - reject"));
           break;
