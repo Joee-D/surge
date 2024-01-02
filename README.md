@@ -1,22 +1,4 @@
 # surge
-# QX转换SURGE
-qx相关的覆写配置转为surge模块。使能模块后，在qx链接的最后加上qx再导入
-https://raw.githubusercontent.com/Joee-D/surge/main/module/qx2surge.sgmodule  
-之后就可以导入使用这些覆写：  
-https://github.com/RuCu6/QuanX/tree/main/Rewrites
-# 微博去广告
-## 方式1：
-https://raw.githubusercontent.com/Joee-D/surge/main/module/weibo.sgmodule
-## 方式2（推荐）：
- 1.添加该模块  
-https://raw.githubusercontent.com/Joee-D/surge/main/module/qx2surge.sgmodule  
- 2.再添加该模块  
-https://raw.githubusercontent.com/RuCu6/QuanX/main/Rewrites/Cube/weibo.snippetqx  
-# bilibili去广告
-## 方式1：
-https://raw.githubusercontent.com/Joee-D/surge/main/module/bilibili.sgmodule
-## 方式2（推荐）：
-1.添加该模块  
-https://raw.githubusercontent.com/Joee-D/surge/main/module/qx2surge.sgmodule  
-2.再添加该模块  
-https://raw.githubusercontent.com/RuCu6/QuanX/main/Rewrites/Cube/bilibili.snippetqx  
+# Aloha浏览器去广告
+解锁vip（支持所有vpn，支持并行下载等vip功能），去除部分网站视频禁止下载的限制，去除广告白名单限制，去除首页优惠的悬浮广告
+https://raw.githubusercontent.com/Joee-D/surge/main/module/aloha.sgmodule
