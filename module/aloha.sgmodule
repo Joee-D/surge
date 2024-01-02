@@ -1,0 +1,8 @@
+#!name=Aloha浏览器增强
+#!desc=解锁VIP，去除视频下载屏蔽，去除广告白名单，去除首页悬浮广告
+
+[MITM]
+hostname = %APPEND% alhapi.com, api.alohaprofile.com
+
+[Script]
+aloha-json = type=http-response,pattern=^https:\/\/(alhapi|api\.alohaprofile)\.com\/v1\/(blockedvideo|profile_info|adblock\_whitelist|speed\_dial\_tiles),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/app2smile/rules/master/js/bilibili-json.js,script-update-interval=0
