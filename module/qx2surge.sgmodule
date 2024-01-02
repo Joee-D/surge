@@ -1,8 +1,0 @@
-#!name=QX转换SURGE
-#!desc=QX转换SURGE，在原链接最后加上qx再添加
-
-[Script]
-QX转换 = type=http-request,pattern=qx$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Joee-D/surge/main/script/qx2surge.js
-
-[MITM]
-hostname = %APPEND% github.com:443, raw.githubusercontent.com:443
