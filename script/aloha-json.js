@@ -1,7 +1,7 @@
 const url = $request.url;
 const method = $request.method;
 const notifyTitle = "aloha-json";
-console.log(`aloha-json-2024.01.02`);
+//console.log(`aloha-json-2024.01.02`);
 if (!$response.body) {
     // 有undefined的情况
     console.log(`$response.body为undefined:${url}`);
