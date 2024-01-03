@@ -12,23 +12,24 @@ if (method !== "GET") {
 }
 let body = JSON.parse($response.body);
 
-
 if (url.includes("v1/profile_info")) {
-    console.log('会员资格修改');
+    //console.log('会员资格修改');
     body.profile.is_premium = true;
-    console.log('成功');
+    body.profile.end_of_premium = 1883639265,
+    body.profile._end_of_premium = "2029-09-09 17:07:45"
+    //console.log('成功');
 } else if (url.includes("v1/blockedvideo")) {
-    console.log('去除视频下载屏蔽');
+    //console.log('去除视频下载屏蔽');
     body.videos = [];
-    console.log('成功');
+    //console.log('成功');
 } else if (url.includes("v1/adblock_whitelist")) {
-    console.log('去除广告白名单');
+    //console.log('去除广告白名单');
     body = [];
-    console.log('成功');
+    //console.log('成功');
 } else if (url.includes("v1/speed_dial_tiles")) {
-    console.log('去除首页悬浮广告');
+    //console.log('去除首页悬浮广告');
     body.modal = false;
-    console.log('成功');
+    //console.log('成功');
 } else {
     $notification.post(notifyTitle, "路径匹配错误:", url);
 }
