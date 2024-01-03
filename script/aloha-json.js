@@ -22,10 +22,6 @@ if (url.includes("v1/profile_info")) {
     //console.log('去除视频下载屏蔽');
     body.videos = [];
     //console.log('成功');
-} else if (url.includes("v1/adblock_whitelist")) {
-    //console.log('去除广告白名单');
-    body = [];
-    //console.log('成功');
 } else if (url.includes("v1/speed_dial_tiles")) {
     //console.log('去除首页悬浮广告');
     body.modal = false;
