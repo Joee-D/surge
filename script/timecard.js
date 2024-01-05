@@ -668,9 +668,9 @@ const calendar = {
 
 var lunar = calendar.solar2lunar();
 var nowsolar = lunar.cMonth +  '月' + lunar.cDay +'日（'+lunar.astro+'）';
-var nowfestival = lunar.festival == 'NULL' ? " : lunar.festival;
+var nowfestival = lunar.festival == 'NULL' ?  '': lunar.festival;
 var nowlunar = lunar.IMonthCn+lunar.IDayCn+' '+lunar.gzYear+lunar.gzMonth+lunar.gzDay+' '+lunar.Animal+'年';
-var nowlunarFestival = lunar.lunarFestival == 'NULL' ? " : lunar.lunarFestival;
+var nowlunarFestival = lunar.lunarFestival == 'NULL' ? '' : lunar.lunarFestival;
     
 var tlist = {
   1: ["元旦", "2024-01-01"],
