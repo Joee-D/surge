@@ -668,8 +668,10 @@ const calendar = {
 
 var lunar = calendar.solar2lunar();
 var nowsolar = lunar.cMonth +  '月' + lunar.cDay +'日（'+lunar.astro+'）';
+var nowfestival = lunar.festival == 'NULL' ? " : lunar.festival;
 var nowlunar = lunar.IMonthCn+lunar.IDayCn+' '+lunar.gzYear+lunar.gzMonth+lunar.gzDay+' '+lunar.Animal+'年';
-
+var nowlunarFestival = lunar.lunarFestival == 'NULL' ? " : lunar.lunarFestival;
+    
 var tlist = {
   1: ["元旦", "2024-01-01"],
   2: ["春节", "2024-02-10"],
@@ -775,7 +777,7 @@ function title_random(num){
 $done({
 //title:title_random(tnumcount(Number(nowlist))),
 //icon:icon_now(tnumcount(Number(nowlist))),
-title:nowsolar+' '+lunar.festival+'\n'+nowlunar+' '+ lunar.lunarFestival,
+title:nowsolar+' '+nowfestival+'\n'+nowlunar+' '+ nowlunarFestival,
 icon:"calendar",
 content:tlist[nowlist][0]+":"+today(tnumcount(nowlist))+","+tlist[Number(nowlist) + Number(1)][0] +":"+ tnumcount(Number(nowlist) + Number(1))+ "天,"+tlist[Number(nowlist) + Number(2)][0]+":"+tnumcount(Number(nowlist) + Number(2))+"天"
 })
