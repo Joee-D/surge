@@ -667,9 +667,7 @@ const calendar = {
 };
 
 var lunar = calendar.solar2lunar();
-//var nowsolar = lunar.cYear + '年' +lunar.cMonth +  '月' + lunar.cDay +'日（'+lunar.astro+'）';
 var nowsolar = lunar.cMonth +  '月' + lunar.cDay +'日（'+lunar.astro+'）';
-//var nowlunar = lunar.lYear + '年' +lunar.IMonthCn+lunar.IDayCn+'，'+lunar.gzYear+'年'+lunar.gzMonth+'月'+lunar.gzDay+'日（'+lunar.Animal+'年）';
 var nowlunar = lunar.IMonthCn+lunar.IDayCn+' '+lunar.gzYear+lunar.gzMonth+lunar.gzDay+' '+lunar.Animal+'年';
 
 var tlist = {
@@ -775,7 +773,9 @@ function title_random(num){
 }
 
 $done({
-title:title_random(tnumcount(Number(nowlist))),
-icon:icon_now(tnumcount(Number(nowlist))),
+//title:title_random(tnumcount(Number(nowlist))),
+//icon:icon_now(tnumcount(Number(nowlist))),
+title:nowlunar,
+icon:"timer",
 content:tlist[nowlist][0]+":"+today(tnumcount(nowlist))+","+tlist[Number(nowlist) + Number(1)][0] +":"+ tnumcount(Number(nowlist) + Number(1))+ "天,"+tlist[Number(nowlist) + Number(2)][0]+":"+tnumcount(Number(nowlist) + Number(2))+"天"
 })
