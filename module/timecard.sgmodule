@@ -1,5 +1,5 @@
 #!name=timecard
-#!desc=显示距离法定节假日还有几天，节日当天早上有提醒。
+#!desc=支持阳历节日/阴历节日/节气倒计时，当天自动更换图标及提醒
 [Panel]
 timecard = script-name=timecard,update-interval=3600
 [Script]
