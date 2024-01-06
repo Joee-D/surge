@@ -665,119 +665,96 @@ const calendar = {
         return this.solar2lunar(cY, cM, cD);
     }
 };
-
-var lunar = calendar.solar2lunar();
-var nowsolar = lunar.cMonth +  '月' + lunar.cDay +'日（'+lunar.astro+'）';
-var nowfestival = lunar.festival == 'NULL' ?  '': lunar.festival;
-var nowlunar = lunar.IMonthCn+lunar.IDayCn+' '+lunar.gzYear+lunar.gzMonth+lunar.gzDay+' '+lunar.Animal+'年';
-var nowlunarFestival = lunar.lunarFestival == 'NULL' ? '' : lunar.lunarFestival;
     
-var tlist = {
-  1: ["元旦", "2024-01-01"],
-  2: ["春节", "2024-02-10"],
-  3: ["元宵", "2024-02-24"],
-  4: ["清明", "2024-04-04"],
-  5: ["劳动", "2024-05-01"],
-  6: ["端午", "2024-06-10"],
-  7: ["中秋", "2024-09-17"],
-  8: ["国庆", "2024-10-01"],
-  9: ["元旦", "2025-01-01"],
-  10: ["春节", "2025-01-29"]
-};
-let tnow = new Date();
-let tnowf =
-  tnow.getFullYear() + "-" + (tnow.getMonth() + 1) + "-" + tnow.getDate();
 
-/* 计算2个日期相差的天数，不包含今天，如：2016-12-13到2016-12-15，相差2天
- * @param startDateString
- * @param endDateString
- * @returns
- */
-function dateDiff(startDateString, endDateString) {
-  var separator = "-"; //日期分隔符
-  var startDates = startDateString.split(separator);
-  var endDates = endDateString.split(separator);
-  var startDate = new Date(startDates[0], startDates[1] - 1, startDates[2]);
-  var endDate = new Date(endDates[0], endDates[1] - 1, endDates[2]);
-  return parseInt(
-    (endDate - startDate) / 1000 / 60 / 60 / 24
-  ).toString();
-}
 
-//计算输入序号对应的时间与现在的天数间隔
-function tnumcount(num) {
-  let dnum = num;
-  return dateDiff(tnowf, tlist[dnum][1]);
-}
 
-//获取最接近的日期
-function now() {
-  for (var i = 1; i <= Object.getOwnPropertyNames(tlist).length; i++) {
-    if (Number(dateDiff(tnowf, tlist[i.toString()][1])) >= 0) {
-      //console.log("最近的日期是:" + tlist[i.toString()][0]);
-      //console.log("列表长度:" + Object.getOwnPropertyNames(tlist).length);
-      //console.log("时间差距:" + Number(dateDiff(tnowf, tlist[i.toString()][1])));
-      return i;
-    }
-  }
-}
 
-//如果是0天，发送emoji;
-let nowlist = now();
-function today(day) {
-  let daythis = day;
-  if (daythis == "0") {
-    datenotice();
-    return "🎉";
-  } else {
-    return daythis+"天";
-  }
-}
 
 //提醒日当天发送通知
-function datenotice() {
-  if ($persistentStore.read("timecardpushed") != tlist[nowlist][1] && tnow.getHours() >= 6) {
-    $persistentStore.write(tlist[nowlist][1], "timecardpushed");
-    $notification.post("假日祝福","", "今天是" + tlist[nowlist][1] + "日 " + tlist[nowlist][0] + "   🎉")
-  } else if ($persistentStore.read("timecardpushed") == tlist[nowlist][1]) {
+function datenotice(date, title, message) {
+	let tnow = new Date();
+  if ($persistentStore.read("timecardpushed") != date && tnow.getHours() >= 6) {
+    $persistentStore.write(date, "timecardpushed");
+    $notification.post(title,"",message);
+  } else if ($persistentStore.read("timecardpushed") == date) {
     //console.log("当日已通知");
   }
 }
 
-//>图标依次切换乌龟、兔子、闹钟、礼品盒
-function icon_now(num){
-  if(num<=7 && num>3 ){
-    return "hare"
-  }else if(num<=3 && num>0){
-    return "timer"
-  }else if(num==0){
-    return "gift"
-  }else{
-    return "tortoise"
-  }
+function gettitle() {
+	var lunar = calendar.solar2lunar();
+  var nowsolar = lunar.cMonth +  '月' + lunar.cDay +'日（'+lunar.astro+'）'+ lunar.ncWeek;
+  var nowlunar = lunar.IMonthCn+lunar.IDayCn+' '+lunar.gzYear+lunar.gzMonth+lunar.gzDay+' '+lunar.Animal+'年';
+	if (lunar.festival != null) {
+		nowfestival = lunar.festival + '|\t';
+		datenotice(lunar.date, '🎉节日提醒•今天是'+lunar.festival, nowsolar+' '+nowlunar);
+	} else {
+		nowfestival = '';
+	}
+	if (lunar.lunarFestival != null) {
+		nowlunarFestival = lunar.lunarFestival + '|\t';
+		datenotice(lunar.date, '🎉节日提醒•今天是'+lunar.lunarFestival, nowsolar+' '+nowlunar);
+	} else {
+		nowlunarFestival = '';
+	}
+	if (lunar.Term != null) {
+		nowterm = lunar.Term + '|\t';
+		datenotice(lunar.date, '🍃节气提醒•今天是'+lunar.Term, nowsolar+' '+nowlunar);
+	} else {
+		nowterm = '';
+	}
+	//datenotice(lunar.date, '📅日期提醒•今天是'+nowsolar, nowlunar);
+	return nowterm+nowfestival+nowsolar+'\n'+nowlunarFestival+nowlunar;
 }
 
-function title_random(num){
-  let r = Math.floor((Math.random()*10)+1);
-  let dic = {
-    1:"距离放假，还要摸鱼多少天？",
-    2:"坚持住，就快放假啦！",
-    3:"上班好累呀，下顿吃啥？",
-    4:"努力，我还能加班24小时！",
-    5:"今日宜：吃饭饭  忌：减肥",
-    6:"躺平中，等放假",
-    7:"只有摸鱼才是赚老板的钱",
-    8: nowlunar,
-    9: nowsolar,
-    10: "小乌龟慢慢爬"
-  };
-  return num==0?"节日快乐，万事大吉":dic[r]
+function getcontent() {
+	let count = [0,0,0];
+	var showcount = 2;
+	let content = ['','',''];
+	let nextday = new Date();
+	for (var i = 1; i <= 365; i++) {
+		nextday.setDate(nextday.getDate() + 1);
+		var tmp = calendar.solar2lunar(nextday.getFullYear(), nextday.getMonth()+1, nextday.getDate());
+		if ((tmp.festival != null) && (count[0] < showcount)) {
+			content[0] += tmp.festival+':'+i+'天 \t';
+			count[0]++;
+		} else if ((tmp.lunarFestival != null) && (count[1] < showcount)) {
+			content[1] += tmp.lunarFestival+':'+i+'天 \t';
+			count[1]++;
+		} else if ((tmp.Term != null) && (count[2] < showcount)) {
+			content[2] += tmp.Term+':'+i+'天 \t';
+			count[2]++;
+		}
+		if ((count[0] == showcount) && (count[1] == showcount) && (count[2] == showcount)) {
+			break;
+		}
+	}
+	return '阳历|\t' + content[0] + '\n农历|\t' + content[1] + '\n节气|\t' + content[2];
+}
+
+function geticon() {
+	var icon = "calendar";
+	var lunar = calendar.solar2lunar();
+	if (lunar.Term != null) {
+		if ((lunar.cMonth >= 2) && (lunar.lMonth<= 4)) {
+			icon = "leaf.fill";
+		} else if ((lunar.cMonth >= 5) && (lunar.lMonth<= 7)) {
+			icon = "camera.macro";
+		} else if ((lunar.cMonth >=8) && (lunar.lMonth<= 10)) {
+			icon = "laurel.leading";
+		} else {
+			icon = "snowflake";
+		}
+	}
+	if ((lunar.festival != null) || (lunar.lunarFestival != null)) {
+		icon = "party.popper";
+	}
+	return icon;
 }
 
 $done({
-//title:title_random(tnumcount(Number(nowlist))),
-//icon:icon_now(tnumcount(Number(nowlist))),
-title:nowsolar+' '+nowfestival+'\n'+nowlunar+' '+ nowlunarFestival,
-icon:"calendar",
-content:tlist[nowlist][0]+":"+today(tnumcount(nowlist))+","+tlist[Number(nowlist) + Number(1)][0] +":"+ tnumcount(Number(nowlist) + Number(1))+ "天,"+tlist[Number(nowlist) + Number(2)][0]+":"+tnumcount(Number(nowlist) + Number(2))+"天"
+title:gettitle(),
+icon:geticon(),
+content:getcontent()
 })
