@@ -673,84 +673,84 @@ const calendar = {
 
 //提醒日当天发送通知
 function datenotice(date, title, message) {
-	let tnow = new Date();
-  if ($persistentStore.read("timecardpushed") != date && tnow.getHours() >= 6) {
-    $persistentStore.write(date, "timecardpushed");
-    $notification.post(title,"",message);
-  } else if ($persistentStore.read("timecardpushed") == date) {
-    //console.log("当日已通知");
-  }
+    let tnow = new Date();
+    if ($persistentStore.read("timecardpushed") != date && tnow.getHours() >= 6) {
+        $persistentStore.write(date, "timecardpushed");
+        $notification.post(title,"",message);
+    } else if ($persistentStore.read("timecardpushed") == date) {
+        //console.log("当日已通知");
+    }
 }
 
 function gettitle() {
-	var lunar = calendar.solar2lunar();
-  var nowsolar = lunar.cMonth +  '月' + lunar.cDay +'日（'+lunar.astro+'）'+ lunar.ncWeek;
-  var nowlunar = lunar.IMonthCn+lunar.IDayCn+' '+lunar.gzYear+lunar.gzMonth+lunar.gzDay+' '+lunar.Animal+'年';
-	if (lunar.festival != null) {
-		nowfestival = lunar.festival + '|\t';
-		datenotice(lunar.date, '🎉节日提醒•今天是'+lunar.festival, nowsolar+' '+nowlunar);
-	} else {
-		nowfestival = '';
-	}
-	if (lunar.lunarFestival != null) {
-		nowlunarFestival = lunar.lunarFestival + '|\t';
-		datenotice(lunar.date, '🎉节日提醒•今天是'+lunar.lunarFestival, nowsolar+' '+nowlunar);
-	} else {
-		nowlunarFestival = '';
-	}
-	if (lunar.Term != null) {
-		nowterm = lunar.Term + '|\t';
-		datenotice(lunar.date, '🍃节气提醒•今天是'+lunar.Term, nowsolar+' '+nowlunar);
-	} else {
-		nowterm = '';
-	}
-	//datenotice(lunar.date, '📅日期提醒•今天是'+nowsolar, nowlunar);
-	return nowterm+nowfestival+nowsolar+'\n'+nowlunarFestival+nowlunar;
+    var lunar = calendar.solar2lunar();
+    var nowsolar = lunar.cMonth +  '月' + lunar.cDay +'日（'+lunar.astro+'）'+ lunar.ncWeek;
+    var nowlunar = lunar.IMonthCn+lunar.IDayCn+' '+lunar.gzYear+lunar.gzMonth+lunar.gzDay+' '+lunar.Animal+'年';
+    if (lunar.festival != null) {
+        nowfestival = lunar.festival + '|\t';
+        datenotice(lunar.date, '🎉节日提醒•今天是'+lunar.festival, nowsolar+' '+nowlunar);
+    } else {
+        nowfestival = '';
+    }
+    if (lunar.lunarFestival != null) {
+        nowlunarFestival = lunar.lunarFestival + '|\t';
+        datenotice(lunar.date, '🎉节日提醒•今天是'+lunar.lunarFestival, nowsolar+' '+nowlunar);
+    } else {
+        nowlunarFestival = '';
+    }
+    if (lunar.Term != null) {
+        nowterm = lunar.Term + '|\t';
+        datenotice(lunar.date, '🍃节气提醒•今天是'+lunar.Term, nowsolar+' '+nowlunar);
+    } else {
+        nowterm = '';
+    }
+    //datenotice(lunar.date, '📅日期提醒•今天是'+nowsolar, nowlunar);
+    return nowterm+nowfestival+nowsolar+'\n'+nowlunarFestival+nowlunar;
 }
 
 function getcontent() {
-	let count = [0,0,0];
-	var showcount = 2;
-	let content = ['','',''];
-	let nextday = new Date();
-	for (var i = 1; i <= 365; i++) {
-		nextday.setDate(nextday.getDate() + 1);
-		var tmp = calendar.solar2lunar(nextday.getFullYear(), nextday.getMonth()+1, nextday.getDate());
-		if ((tmp.festival != null) && (count[0] < showcount)) {
-			content[0] += tmp.festival+':'+i+'天 \t';
-			count[0]++;
-		} else if ((tmp.lunarFestival != null) && (count[1] < showcount)) {
-			content[1] += tmp.lunarFestival+':'+i+'天 \t';
-			count[1]++;
-		} else if ((tmp.Term != null) && (count[2] < showcount)) {
-			content[2] += tmp.Term+':'+i+'天 \t';
-			count[2]++;
-		}
-		if ((count[0] == showcount) && (count[1] == showcount) && (count[2] == showcount)) {
-			break;
-		}
-	}
-	return '阳历|\t' + content[0] + '\n农历|\t' + content[1] + '\n节气|\t' + content[2];
+    let count = [0,0,0];
+    var showcount = 2;
+    let content = ['','',''];
+    let nextday = new Date();
+    for (var i = 1; i <= 365; i++) {
+        nextday.setDate(nextday.getDate() + 1);
+        var tmp = calendar.solar2lunar(nextday.getFullYear(), nextday.getMonth()+1, nextday.getDate());
+        if ((tmp.festival != null) && (count[0] < showcount)) {
+            content[0] += tmp.festival+':'+i+'天 \t';
+            count[0]++;
+        } else if ((tmp.lunarFestival != null) && (count[1] < showcount)) {
+            content[1] += tmp.lunarFestival+':'+i+'天 \t';
+            count[1]++;
+        } else if ((tmp.Term != null) && (count[2] < showcount)) {
+            content[2] += tmp.Term+':'+i+'天 \t';
+            count[2]++;
+        }
+        if ((count[0] == showcount) && (count[1] == showcount) && (count[2] == showcount)) {
+            break;
+        }
+    }
+    return '阳历|\t' + content[0] + '\n农历|\t' + content[1] + '\n节气|\t' + content[2];
 }
 
 function geticon() {
-	var icon = "calendar";
-	var lunar = calendar.solar2lunar();
-	if (lunar.Term != null) {
-		if ((lunar.cMonth >= 2) && (lunar.lMonth<= 4)) {
-			icon = "leaf.fill";
-		} else if ((lunar.cMonth >= 5) && (lunar.lMonth<= 7)) {
-			icon = "camera.macro";
-		} else if ((lunar.cMonth >=8) && (lunar.lMonth<= 10)) {
-			icon = "laurel.leading";
-		} else {
-			icon = "snowflake";
-		}
-	}
-	if ((lunar.festival != null) || (lunar.lunarFestival != null)) {
-		icon = "party.popper";
-	}
-	return icon;
+    var icon = "calendar";
+    var lunar = calendar.solar2lunar();
+    if (lunar.Term != null) {
+        if ((lunar.cMonth >= 2) && (lunar.lMonth<= 4)) {
+            icon = "leaf.fill";
+        } else if ((lunar.cMonth >= 5) && (lunar.lMonth<= 7)) {
+            icon = "camera.macro";
+        } else if ((lunar.cMonth >=8) && (lunar.lMonth<= 10)) {
+            icon = "laurel.leading";
+        } else {
+            icon = "snowflake";
+        }
+    }
+    if ((lunar.festival != null) || (lunar.lunarFestival != null)) {
+        icon = "party.popper";
+    }
+    return icon;
 }
 
 $done({
