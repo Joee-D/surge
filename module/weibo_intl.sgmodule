@@ -1,13 +1,11 @@
 #!name=微博轻享版去广告
 #!desc=删除微博轻享版开屏广告，信息流广告
 #!system=ios
+[Rule]
+DOMAIN-SUFFIX,bootpreload.uve.weibo.com,REJECT
 
 [URL Rewrite]
 ^https?:\/\/(weibointl\.)?api\.weibo\.c(n|om)\/(portal\.php.*ads|\d\/ad) - reject
-
-[Map Local]
-//"^https?:\/\/(weibointl\.)?api\.weibo\.c(n|om)\/portal\.php.*ads" data="https://raw.githubusercontent.com/Joee-D/surge/main/script/blank/blank_dict.json"
-//"^https?:\/\/(weibointl\.)?api\.weibo\.c(n|om)\/\d\/ad" data="https://raw.githubusercontent.com/Joee-D/surge/main/script/blank/blank_array.json"
 
 [Script]
 //weibo_intl = type=http-response,pattern=^https?:\/\/(weibointl\.)?api\.weibo\.c(n|om)\/(portal\.php.*ads|\d\/(ad\/weibointl|statuses\/friends\/timeline)),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Joee-D/surge/main/script/weibo_intl.js,script-update-interval=0
