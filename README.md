@@ -1,5 +1,5 @@
 # surge
-## 微博国际版去广告
+## 微博轻享版去广告
 去除开屏广告，去除信息流广告  
 https://raw.githubusercontent.com/Joee-D/surge/main/module/weibo_intl.sgmodule
 ## Aloha浏览器增强
