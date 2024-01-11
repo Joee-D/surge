@@ -15,8 +15,8 @@ let body = JSON.parse($response.body);
 if (url.includes("v1/profile_info")) {
     //console.log('会员资格修改');
     body.profile.is_premium = true;
-    body.profile.end_of_premium = 1883639265,
-    body.profile._end_of_premium = "2029-09-09 17:07:45"
+    body.profile.end_of_premium = 3818419199,
+    body.profile._end_of_premium = "2090-12-31 23:59:59"
     //console.log('成功');
 } else if (url.includes("v1/blockedvideo")) {
     //console.log('去除视频下载屏蔽');
