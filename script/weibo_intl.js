@@ -1,6 +1,6 @@
 const url = $request.url;
 let body = JSON.parse($response.body);
-if (url.includes("friends_timeline") || url.includes("friends/timeline")) {
+if (url.includes("friends/timeline")) {
   body.advertises=[];
   body.ad=[];
 } else if (url.includes("ad/weibointl")) {
