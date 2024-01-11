@@ -1,7 +1,6 @@
 (async () => {
   let args = getArgs();
-  let url = args.url == decodeURIComponent(args.url) ? encodeURIComponent(args.url): args.url;
-  let info = await getDataInfo(url);
+  let info = await getDataInfo(args.url);
   if (!info) $done();
   let resetDayLeft = getRmainingDays(parseInt(args["reset_day"]));
 
