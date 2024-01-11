@@ -1,14 +1,7 @@
-/*
- * 由@mieqq编写
- * 原脚本地址：https://raw.githubusercontent.com/mieqq/mieqq/master/sub_info_panel.js
- * 由@Rabbit-Spec Key 修改
- * 更新日期：2023.02.20
- * 版本：1.6
-*/
-
 (async () => {
   let args = getArgs();
-  let info = await getDataInfo(args.url);
+  let url = args.url == decodeURIComponent(args.url) ? encodeURIComponent(args.url): args.url;
+  let info = await getDataInfo(url);
   if (!info) $done();
   let resetDayLeft = getRmainingDays(parseInt(args["reset_day"]));
 
