@@ -1,0 +1,3 @@
+app.bilibili.com
+grpc.biliapi.net
+.akamaized.net
