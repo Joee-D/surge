@@ -4,6 +4,7 @@
 
 [Rule]
 DOMAIN-SUFFIX,bootpreload.uve.weibo.com,REJECT
+DOMAIN-SUFFIX,bootrealtime.uve.weibo.com,REJECT
 URL-REGEX,^https?:\/\/api\.weibo\.c(n|om)\/\d\/ad,REJECT
 URL-REGEX,^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*ads,REJECT
 
