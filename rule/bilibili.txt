@@ -1,4 +1,4 @@
-app.bilibili.com
+api.bilibili.com
 app.bilibili.com
 grpc.biliapi.net
 .akamaized.net
