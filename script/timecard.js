@@ -705,7 +705,7 @@ function gettitle() {
         nowterm = '';
     }
     //datenotice(lunar.date, '📅日期提醒•今天是'+nowsolar, nowlunar);
-    return nowterm+nowfestival+nowsolar+'\n'+nowlunarFestival+nowlunar;
+    return nowfestival+nowlunarFestival+nowterm+nowsolar+'\n'+nowlunar;
 }
 
 function getcontent() {
