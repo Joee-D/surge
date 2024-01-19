@@ -723,7 +723,7 @@ function getcontent() {
             content[1] += tmp.lunarFestival+':'+i+'天\t ';
             count[1]++;
         } else if ((tmp.Term != null) && (count[2] < showcount)) {
-            content[2] += tmp.Term+':'+i+'天\t ';
+            content[2] += tmp.Term+':'+i+'天  \t ';
             count[2]++;
         }
         if ((count[0] == showcount) && (count[1] == showcount) && (count[2] == showcount)) {
