@@ -687,25 +687,25 @@ function gettitle() {
     var nowsolar = lunar.cMonth +  '月' + lunar.cDay +'日（'+lunar.astro+'）'+ lunar.ncWeek;
     var nowlunar = lunar.IMonthCn+lunar.IDayCn+' '+lunar.gzYear+lunar.gzMonth+lunar.gzDay+' '+lunar.Animal+'年';
     if (lunar.festival != null) {
-        nowfestival = lunar.festival + '|\t';
+        nowfestival = lunar.festival + '·';
         datenotice(lunar.date, '🎉节日提醒•今天是'+lunar.festival, nowsolar+' '+nowlunar);
     } else {
         nowfestival = '';
     }
     if (lunar.lunarFestival != null) {
-        nowlunarFestival = lunar.lunarFestival + '|\t';
+        nowlunarFestival = lunar.lunarFestival + '·';
         datenotice(lunar.date, '🎉节日提醒•今天是'+lunar.lunarFestival, nowsolar+' '+nowlunar);
     } else {
         nowlunarFestival = '';
     }
     if (lunar.Term != null) {
-        nowterm = lunar.Term + '|\t';
+        nowterm = lunar.Term + '·';
         datenotice(lunar.date, '🍃节气提醒•今天是'+lunar.Term, nowsolar+' '+nowlunar);
     } else {
         nowterm = '';
     }
     //datenotice(lunar.date, '📅日期提醒•今天是'+nowsolar, nowlunar);
-    return nowfestival+nowlunarFestival+nowterm+nowsolar+'\n'+nowlunar;
+    return nowfestival+nowlunarFestival+nowterm+lunar.cMonth +  '月' + lunar.cDay + '日 ' + lunar.ncWeek + ' ' + lunar.IMonthCn+lunar.IDayCn;
 }
 
 function getcontent() {
