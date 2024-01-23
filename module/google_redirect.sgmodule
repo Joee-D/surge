@@ -1,9 +1,11 @@
 #!name=Google重定向
 #!desc=Safari 谷歌搜索重定向
 #!system=ios
+[General]
+force-http-engine-hosts = %APPEND% google.cn
 
 [URL Rewrite]
-^https?:\/\/(www.)?(g|google)\.cn https://www.google.com 302
+^https?:\/\/(www.)?google\.cn https://www.google.com 302
 
 [MITM]
-hostname = %APPEND% www.google.cn, www.g.cn
+hostname = %APPEND% www.google.cn
