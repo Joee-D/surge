@@ -15,6 +15,10 @@ if (url.includes("container_timeline") || url.includes("searchall")) {
   if (obj.head_cards) {
     delete obj.head_cards;
   }
+} else if (url.includes("ad/preload")) {
+  if (obj.ads) {
+    obj.ads = [];
+  }
 }
 
 body = JSON.stringify(obj);
