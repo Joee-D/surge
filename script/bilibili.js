@@ -16,7 +16,7 @@ if (url.includes("/x/v2/feed/index?")) {
                       }
                   }
               }
-          } else if (cardGoto.includes("ad") || (cardGoto.includes("game")) {
+          } else if ((cardGoto.includes("ad")) || (cardGoto.includes("game"))) {
               return false;
           }
       }
