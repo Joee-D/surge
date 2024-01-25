@@ -4,23 +4,23 @@ let body = JSON.parse($response.body);
 if (url.includes("/x/v2/feed/index?")) {
   if (body?.data?.items?.length > 0) {
     body.data.items = body.data.items.filter(i => {
-        const {card_type: cardType, card_goto: cardGoto} = i;
-        if (cardType && cardGoto) {
-            if (cardType === 'banner_v8' && cardGoto === 'banner') {
-                if (i.banner_item) {
-                    for (const v of i.banner_item) {
-                        if (v.type){
-                            if (v.type === 'ad') {
-                                return false;
-                            }
-                        }
-                    }
-                }
-            } else if (['ad', 'game'].includes(cardGoto)) {
-                return false;
-            }
-        }
-        return true;
+      const {card_type: cardType, card_goto: cardGoto} = i;
+      if (cardType && cardGoto) {
+          if (cardType === 'banner_v8' && cardGoto === 'banner') {
+              if (i.banner_item) {
+                  for (const v of i.banner_item) {
+                      if (v.type){
+                          if (v.type === 'ad') {
+                              return false;
+                          }
+                      }
+                  }
+              }
+          } else if (['ad', 'game'].includes(cardGoto)) {
+              return false;
+          }
+      }
+      return true;
     });
   }
 } else if (url.includes("x/v2/splash")) {
