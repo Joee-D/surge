@@ -7,6 +7,10 @@ if (url.includes("friends/timeline")) {
   body.data=[];
 } else if (url.includes("get_coopen_ads")) {
   body.data={};
+} else if (url.includes("ad/preload")) {
+  if (body.ads) {
+    body.ads = [];
+  }
 }
 
 body = JSON.stringify(body);
