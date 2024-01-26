@@ -28,15 +28,6 @@ if (url.includes("/x/v2/feed/index?")) {
     delete body.data.show;
   }
 } else if (url.includes("resource/show/tab/v2")) {
-  if (body.data.tab) {
-    body.data.tab = body.data.tab.filter(item => {
-      if (item.name === '新征程') {
-        return false;
-      }
-      return true;
-    });
-    fixPos(body.data.tab);
-  }
   if (body.data.top) {
     body.data.top = body.data.top.filter(item => {
       if (item.name === '游戏中心') {
