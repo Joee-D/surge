@@ -10,3 +10,10 @@ if (url.includes("friends/timeline")) {
 } else if (url.includes("ad/preload")) {
   if (body.ads) {
     body.ads = [];
+  }
+}
+
+body = JSON.stringify(body);
+$done({
+    body
+});
