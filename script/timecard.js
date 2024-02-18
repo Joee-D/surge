@@ -757,7 +757,7 @@ function getcontentsimple() {
             content += '\t';
         }
     }
-    return content[0];
+    return content;
 }
 
 function geticon() {
