@@ -717,13 +717,13 @@ function getcontent() {
         nextday.setDate(nextday.getDate() + 1);
         var tmp = calendar.solar2lunar(nextday.getFullYear(), nextday.getMonth()+1, nextday.getDate());
         if ((tmp.festival != null) && (count[0] < showcount)) {
-            content[0] += tmp.festival.padEnd(12 - 2 * tmp.festival.length)+':'+i+'天\t ';
+            content[0] += tmp.festival+':'+i+'天\t ';
             count[0]++;
         } else if ((tmp.lunarFestival != null) && (count[1] < showcount)) {
-            content[1] += tmp.lunarFestival.padEnd(12 - 2 * tmp.lunarFestival.length)+':'+i+'天\t ';
+            content[1] += tmp.lunarFestival+':'+i+'天\t ';
             count[1]++;
         } else if ((tmp.Term != null) && (count[2] < showcount)) {
-            content[2] += tmp.Term.padEnd(12 - 2 * tmp.Term.length)+':'+i+'天\t ';
+            content[2] += tmp.Term+':'+i+'天\t ';
             count[2]++;
         }
         if ((count[0] == showcount) && (count[1] == showcount) && (count[2] == showcount)) {
