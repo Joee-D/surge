@@ -783,5 +783,5 @@ function geticon() {
 $done({
 title:gettitle(),
 icon:geticon(),
-content:getcontentsimple()
+content:getcontent()
 })
