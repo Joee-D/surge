@@ -733,6 +733,32 @@ function getcontent() {
     return '阳历|\t' + content[0] + '\n农历|\t' + content[1] + '\n节气|\t' + content[2];
 }
 
+function getcontentsimple() {
+    let count = 0;
+    var showcount = 2;
+    let content = '';
+    let nextday = new Date();
+    for (var i = 1; i <= 365; i++) {
+        nextday.setDate(nextday.getDate() + 1);
+        var tmp = calendar.solar2lunar(nextday.getFullYear(), nextday.getMonth()+1, nextday.getDate());
+        if (tmp.festival != null) {
+            content += tmp.festival+':'+i+'天';
+            count++;
+        } else if (tmp.lunarFestival != null) {
+            content += tmp.lunarFestival+':'+i+'天';
+            count++;
+        } else if (tmp.Term != null) {
+            content += tmp.Term+':'+i+'天';
+            count++;
+        }
+        if (count >= showcount) {
+            break;
+        } else {
+            content += '\t';
+        }
+    return content[0];
+}
+
 function geticon() {
     var icon = "calendar";
     var lunar = calendar.solar2lunar();
@@ -756,5 +782,5 @@ function geticon() {
 $done({
 title:gettitle(),
 icon:geticon(),
-content:getcontent()
+content:getcontentsimple()
 })
