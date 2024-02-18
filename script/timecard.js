@@ -756,6 +756,7 @@ function getcontentsimple() {
         } else {
             content += '\t';
         }
+    }
     return content[0];
 }
 
