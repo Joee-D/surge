@@ -10,7 +10,9 @@ https://raw.githubusercontent.com/Joee-D/surge/main/module/weibo.sgmodule
 https://raw.githubusercontent.com/Joee-D/surge/main/module/weibo_intl.sgmodule
 ## Aloha浏览器增强
 解锁vip  
-https://raw.githubusercontent.com/Joee-D/surge/main/module/aloha.sgmodule
+https://raw.githubusercontent.com/Joee-D/surge/main/module/aloha.sgmodule  
+解锁VIP，去除视频下载屏蔽，去除首页悬浮广告  
+https://raw.githubusercontent.com/Joee-D/surge/main/module/aloha_v2.sgmodule 
 ## BILIBILI去广告
 去除开屏广告，去除推荐广告  
 https://raw.githubusercontent.com/Joee-D/surge/main/module/bilibili.sgmodule  
