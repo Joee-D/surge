@@ -1,5 +1,6 @@
 #!name=Google重定向
 #!desc=Safari 谷歌搜索重定向
+#!category=Enhancements
 #!system=ios
 
 [URL Rewrite]
