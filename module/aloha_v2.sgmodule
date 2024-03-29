@@ -1,4 +1,6 @@
+#!name=Aloha浏览器增强
 #!desc=解锁VIP，去除视频下载屏蔽，去除首页悬浮广告
+#!category=Enhancements
 
 [MITM]
 hostname = %APPEND% alhapi.com, api.alohaprofile.com
