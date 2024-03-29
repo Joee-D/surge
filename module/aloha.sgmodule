@@ -1,5 +1,6 @@
 #!name=Aloha浏览器增强
 #!desc=解锁VIP
+#!category=Enhancements
 
 [MITM]
 hostname = %APPEND% api.alohaprofile.com
