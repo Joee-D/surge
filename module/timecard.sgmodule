@@ -1,5 +1,6 @@
 #!name=节日节气卡片
 #!desc=节日节气倒计时，自动更换图标及提醒
+#!category=Cards
 [Panel]
 timecard = script-name=timecard,update-interval=3600
 [Script]
