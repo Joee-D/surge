@@ -109,8 +109,8 @@ const calendar = {
         '10-1': {title: '寒衣节'},
         '10-15': {title: '下元节'},
         '12-8': {title: '腊八节'},
-        '12-23': {title: '北方小年'},
-        '12-24': {title: '南方小年'},
+        '12-23': {title: '小年'},
+        //'12-24': {title: '南方小年'},
     },
 
     /**
@@ -738,17 +738,33 @@ function getcontentsimple() {
     var showcount = 2;
     let content = '';
     let nextday = new Date();
+    let padString = "\xa0\xa0\xa0\xa0"
     for (var i = 1; i <= 365; i++) {
         nextday.setDate(nextday.getDate() + 1);
         var tmp = calendar.solar2lunar(nextday.getFullYear(), nextday.getMonth()+1, nextday.getDate());
         if (tmp.festival != null) {
-            content += tmp.festival+':'+i+'天';
+            if (length(tmp.festival) < 3) {
+                let festival = tmp.festival.slice(0, 1) + padString + tmp.festival.slice(1)
+            } else {
+                let festival = tmp.festival;
+            }
+            content += festival+':'+i+'天';
             count++;
         } else if (tmp.lunarFestival != null) {
-            content += tmp.lunarFestival+':'+i+'天';
+            if (length(tmp.lunarFestival) < 3) {
+                let lunarFestival = tmp.lunarFestival.slice(0, 1) + padString + tmp.lunarFestival.slice(1)
+            } else {
+                let lunarFestival = tmp.lunarFestival;
+            }
+            content += lunarFestival+':'+i+'天';
             count++;
         } else if (tmp.Term != null) {
-            content += tmp.Term+':'+i+'天';
+            if (length(tmp.Term) < 3) {
+                let Term = tmp.Term.slice(0, 1) + padString + tmp.Term.slice(1)
+            } else {
+                let Term = tmp.Term;
+            }
+            content += Term+':'+i+'天';
             count++;
         }
         if (count >= showcount) {
