@@ -2,7 +2,7 @@ const url = $request.url;
 let body = $response.body;
 let obj = JSON.parse(body);
 
-if (url.includes("container_timeline") || url.includes("finder")) {
+if (url.includes("container_timeline")) {
   if (obj.items && obj.items.length > 0) {
     let i = obj.items.length;
     while(i--) {
