@@ -18,10 +18,6 @@ if (url.includes("container_timeline")) {
   if (obj.trend) {
     delete obj.trend;
   }
-} else if (url.includes("ad/preload")) {
-  if (obj.ads) {
-    obj.ads = [];
-  }
 }
 
 body = JSON.stringify(obj);
