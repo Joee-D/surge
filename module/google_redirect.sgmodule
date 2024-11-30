@@ -1,7 +1,8 @@
 #!name=Google重定向
 #!desc=Safari 谷歌搜索重定向
 #!category=Enhancements
-#!system=ios
 
+[General]
+force-http-engine-hosts = %APPEND% *.google.cn
 [URL Rewrite]
 ^http:\/\/(www.)?google\.cn https://www.google.com 302
