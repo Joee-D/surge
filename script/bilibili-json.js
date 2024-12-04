@@ -24,8 +24,8 @@ if (url.includes("/x/v2/feed/index?")) {
     });
   }
 } else if (url.includes("x/v2/splash")) {
-  if (body.data.show) {
-    delete body.data.show;
+  if (body.data) {
+    body.data = {};
   }
 } else if (url.includes("resource/show/tab/v2")) {
   if (body.data.top) {
