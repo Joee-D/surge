@@ -75,7 +75,7 @@ const calendar = {
      * 阳历节日
      */
     festival: {
-        '1-1': {title: '元旦节'},
+        '1-1': {title: '元旦'},
         '2-14': {title: '情人节'},
         '5-1': {title: '劳动节'},
         '5-4': {title: '青年节'},
@@ -97,8 +97,8 @@ const calendar = {
      * 农历节日
      */
     lFestival: {
-        '12-30': {title: '除\xa0\xa0\xa0\xa0夕'},
-        '1-1': {title: '春\xa0\xa0\xa0\xa0节'},
+        '12-30': {title: '除夕'},
+        '1-1': {title: '春节'},
         '1-15': {title: '元宵节'},
         '2-2': {title: '龙抬头'},
         '5-5': {title: '端午节'},
@@ -109,7 +109,7 @@ const calendar = {
         '10-1': {title: '寒衣节'},
         '10-15': {title: '下元节'},
         '12-8': {title: '腊八节'},
-        '12-23': {title: '小\xa0\xa0\xa0\xa0年'},
+        '12-23': {title: '小年'},
         //'12-24': {title: '南方小年'},
     },
 
@@ -149,7 +149,7 @@ const calendar = {
      * @trans["小寒","大寒","立春","雨水","惊蛰","春分","清明","谷雨","立夏","小满","芒种","夏至","小暑","大暑","立秋","处暑","白露","秋分","寒露","霜降","立冬","小雪","大雪","冬至"]
      * @return Cn string
      */
-    solarTerm: ["\u5c0f\xa0\xa0\xa0\xa0\u5bd2", "\u5927\xa0\xa0\xa0\xa0\u5bd2", "\u7acb\xa0\xa0\xa0\xa0\u6625", "\u96e8\xa0\xa0\xa0\xa0\u6c34", "\u60ca\xa0\xa0\xa0\xa0\u86f0", "\u6625\xa0\xa0\xa0\xa0\u5206", "\u6e05\xa0\xa0\xa0\xa0\u660e", "\u8c37\xa0\xa0\xa0\xa0\u96e8", "\u7acb\xa0\xa0\xa0\xa0\u590f", "\u5c0f\xa0\xa0\xa0\xa0\u6ee1", "\u8292\xa0\xa0\xa0\xa0\u79cd", "\u590f\xa0\xa0\xa0\xa0\u81f3", "\u5c0f\xa0\xa0\xa0\xa0\u6691", "\u5927\xa0\xa0\xa0\xa0\u6691", "\u7acb\xa0\xa0\xa0\xa0\u79cb", "\u5904\xa0\xa0\xa0\xa0\u6691", "\u767d\xa0\xa0\xa0\xa0\u9732", "\u79cb\xa0\xa0\xa0\xa0\u5206", "\u5bd2\xa0\xa0\xa0\xa0\u9732", "\u971c\xa0\xa0\xa0\xa0\u964d", "\u7acb\xa0\xa0\xa0\xa0\u51ac", "\u5c0f\xa0\xa0\xa0\xa0\u96ea", "\u5927\xa0\xa0\xa0\xa0\u96ea", "\u51ac\xa0\xa0\xa0\xa0\u81f3"],
+    solarTerm: ["\u5c0\u5bd2", "\u5927\u5bd2", "\u7acb\u6625", "\u96e8\u6c34", "\u60ca\u86f0", "\u6625\u5206", "\u6e05\u660e", "\u8c37\u96e8", "\u7acb\u590f", "\u5c0f\u6ee1", "\u8292\u79cd", "\u590f\u81f3", "\u5c0f\u6691", "\u5927\u6691", "\u7acb\u79cb", "\u5904\u6691", "\u767d\u9732", "\u79cb\u5206", "\u5bd2\u9732", "\u971c\u964d", "\u7acb\u51ac", "\u5c0f\u96ea", "\u5927\u96ea", "\u51ac\u81f3"],
 
     /**
      * 1900-2100各年的24节气日期速查表
