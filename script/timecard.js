@@ -717,20 +717,29 @@ function getcontent() {
         nextday.setDate(nextday.getDate() + 1);
         var tmp = calendar.solar2lunar(nextday.getFullYear(), nextday.getMonth()+1, nextday.getDate());
         if ((tmp.festival != null) && (count[0] < showcount)) {
-            content[0] += tmp.festival+':'+i+'天\t ';
+            content[0] += tmp.festival+':'+i+'天';
             count[0]++;
+            if (count[0] < showcount) {
+                content[0] += '\t  ';
+            }
         } else if ((tmp.lunarFestival != null) && (count[1] < showcount)) {
-            content[1] += tmp.lunarFestival+':'+i+'天\t ';
+            content[1] += tmp.lunarFestival+':'+i+'天';
             count[1]++;
+            if (count[1] < showcount) {
+                content[1] += '\t  ';
+            }
         } else if ((tmp.Term != null) && (count[2] < showcount)) {
-            content[2] += tmp.Term+':'+i+'天\t ';
+            content[2] += tmp.Term+':'+i+'天';
             count[2]++;
+            if (count[2] < showcount) {
+                content[2] += '\t  ';
+            }
         }
         if ((count[0] == showcount) && (count[1] == showcount) && (count[2] == showcount)) {
             break;
         }
     }
-    return '阳历|\t' + content[0] + '\n农历|\t' + content[1] + '\n节气|\t' + content[2];
+    return '阳历| ' + content[0] + '\n农历| ' + content[1] + '\n节气| ' + content[2];
 }
 
 function getcontentsimple() {
