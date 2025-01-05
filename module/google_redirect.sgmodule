@@ -9,4 +9,4 @@ force-http-engine-hosts = %APPEND% *.google.cn
 ^https?:\/\/(www.)?google\.cn https://www.google.com 302
 
 [MITM]
-hostname = %APPEND% *google.cn
+hostname = %APPEND% www.google.cn
