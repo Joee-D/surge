@@ -4,5 +4,9 @@
 
 [General]
 force-http-engine-hosts = %APPEND% *.google.cn
+
 [URL Rewrite]
 ^https?:\/\/(www.)?google\.cn https://www.google.com 302
+
+[MITM]
+hostname = %APPEND% *google.cn
