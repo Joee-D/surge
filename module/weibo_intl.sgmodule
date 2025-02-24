@@ -1,6 +1,6 @@
 #!name=微博轻享版去广告
 #!desc=删除微博轻享版开屏、信息流、评论广告
-#!category=Enhancements
+#!category=Private
 
 [Map Local]
 "https?:\/\/api\.weibo\.cn\/\d\/ad\/weibointl\?" data-type=text data="{}"
