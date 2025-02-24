@@ -1,6 +1,6 @@
 #!name=Google重定向
 #!desc=Safari 谷歌搜索重定向
-#!category=Enhancements
+#!category=Private
 
 [General]
 force-http-engine-hosts = %APPEND% *.google.cn
