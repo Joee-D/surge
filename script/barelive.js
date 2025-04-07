@@ -9,7 +9,7 @@ if (url.includes("v1/lives")) {
     obj.watermark_enabled = false;
   }
 } else if (url.includes("v3/profile")) {
-  if (obj.premium) {
+  if (obj.premium == false) {
     obj.premium = true;
   }
 }
