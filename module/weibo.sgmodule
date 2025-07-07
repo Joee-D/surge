@@ -4,7 +4,7 @@
 #!system=ios
 
 [Script]
-weibo-json = type=http-response,pattern=^https:\/\/api\.weibo\.cn\/\d\/((statuses|search|profile)\/(container_timeline|extend|finder)),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Joee-D/surge/main/script/weibo.js,script-update-interval=0
+weibo-json = type=http-response,pattern=^https:\/\/api\.weibo\.cn\/\d\/((statuses|search|profile)\/(container_timeline|container_detail_comment|extend|finder)),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Joee-D/surge/main/script/weibo.js,script-update-interval=0
 [Map Local]
 "^https:\/\/bootrealtime\.uve\.weibo\.com\/v\d\/ad\/realtime" data-type=text data="{}"
 "^https:\/\/bootpreload\.uve\.weibo\.com\/v\d\/ad\/preload" data-type=text data="{}"
