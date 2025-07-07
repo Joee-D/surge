@@ -24,7 +24,7 @@ if (url.includes("container_timeline")) {
   if (obj.pageHeader.data.items && obj.pageHeader.data.items.length > 0) {
     let i = obj.pageHeader.data.items.length;
     while(i--) {
-      if(obj.pageHeader.data.items[i].category == wboxcard) {
+      if(obj.pageHeader.data.items[i].category == 'wboxcard') {
         obj.pageHeader.data.items.splice(i, 1);
       }
     } 
