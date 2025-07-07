@@ -20,12 +20,9 @@ if (url.includes("container_timeline")) {
       }
     } 
   }
-} else if (url.includes("extend")) {
-  if (obj.head_cards) {
-    delete obj.head_cards;
-  }
-  if (obj.trend) {
-    delete obj.trend;
+} else if (url.includes("container_detail")) {
+  if (obj.pageHeader) {
+    delete obj.pageHeader;
   }
 }
 
