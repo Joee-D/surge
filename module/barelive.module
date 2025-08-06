@@ -1,0 +1,9 @@
+#!name=bare live解锁
+#!desc=解锁付费内容并调用filebar打开
+#!category=Private
+
+[MITM]
+hostname = %APPEND% api.bare.live
+
+[Script]
+barelive-json = type=http-response,pattern=^https:\/\/api\.bare\.live\/v1\/lives\/\d,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Joee-D/surge/refs/heads/main/script/barelive.js,script-update-interval=0
