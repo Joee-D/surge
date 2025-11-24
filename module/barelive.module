@@ -1,5 +1,5 @@
 #!name=bare live解锁
-#!desc=解锁付费内容并调用filebar打开
+#!desc=解锁付费内容并调用SenPlayer打开
 #!category=Private
 
 [MITM]
