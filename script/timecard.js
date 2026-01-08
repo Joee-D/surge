@@ -751,18 +751,28 @@ function getcontentsimple() {
         nextday.setDate(nextday.getDate() + 1);
         var tmp = calendar.solar2lunar(nextday.getFullYear(), nextday.getMonth()+1, nextday.getDate());
         if ((tmp.festival == '元旦') || (tmp.festival == '劳动节') || (tmp.festival == '国庆节')) {
-            content += tmp.festival+':'+i+'天\t';
+            content += tmp.festival+':'+i+'天';
             count++;
+            if (count >= showcount) {
+                break;
+            }
+            content += '\n';
         } else if ((tmp.lunarFestival == '春节') || (tmp.lunarFestival == '端午节') || (tmp.lunarFestival == '中秋节')) {
-            content += tmp.lunarFestival+':'+i+'天\t';
+            content += tmp.lunarFestival+':'+i+'天';
             count++;
+            if (count >= showcount) {
+                break;
+            }
+            content += '\n';
         } else if (tmp.Term == '清明') {
-            content += tmp.Term+':'+i+'天\t';
+            content += tmp.Term+':'+i+'天';
             count++;
+            if (count >= showcount) {
+                break;
+            }
+            content += '\n';
         }
-        if (count >= showcount) {
-            break;
-        }
+
     }
     return content;
 }
