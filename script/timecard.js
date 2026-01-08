@@ -744,19 +744,19 @@ function getcontent() {
 
 function getcontentsimple() {
     let count = 0;
-    var showcount = 2;
+    var showcount = 4;
     let content = '';
     let nextday = new Date();
     for (var i = 1; i <= 365; i++) {
         nextday.setDate(nextday.getDate() + 1);
         var tmp = calendar.solar2lunar(nextday.getFullYear(), nextday.getMonth()+1, nextday.getDate());
-        if (tmp.festival != null) {
+        if ((tmp.festival == '元旦') || (tmp.festival == '劳动节') || (tmp.festival == '国庆节')) {
             content += tmp.festival+':'+i+'天';
             count++;
-        } else if (tmp.lunarFestival != null) {
+        } else if ((tmp.lunarFestival == '春节') || (tmp.lunarFestival == '端午节') || (tmp.lunarFestival == '中秋节')) {
             content += tmp.lunarFestival+':'+i+'天';
             count++;
-        } else if (tmp.Term != null) {
+        } else if ((tmp.Term == '清明') || ) {
             content += tmp.Term+':'+i+'天';
             count++;
         }
@@ -792,5 +792,5 @@ function geticon() {
 $done({
 title:gettitle(),
 icon:geticon(),
-content:getcontent()
+content:getcontentsimple()
 })
