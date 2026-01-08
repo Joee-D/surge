@@ -756,7 +756,7 @@ function getcontentsimple() {
         } else if ((tmp.lunarFestival == '春节') || (tmp.lunarFestival == '端午节') || (tmp.lunarFestival == '中秋节')) {
             content += tmp.lunarFestival+':'+i+'天';
             count++;
-        } else if ((tmp.Term == '清明') || ) {
+        } else if (tmp.Term == '清明') {
             content += tmp.Term+':'+i+'天';
             count++;
         }
