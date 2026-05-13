@@ -21,6 +21,7 @@ if(!headers[gzipStrName]){
     // Loon QX做调整
     gzipStrName = 'Grpc-Encoding';
 }
+headers["grpc-status"] = "0";
 const isGzipCompress = headers[gzipStrName] === 'gzip';
 const unGzipBody = isGzipCompress ? pako.ungzip(binaryBody.slice(5)) : binaryBody.slice(5);
 headers[gzipStrName] = 'identity';
