@@ -1,6 +1,6 @@
 #!name=bare live解锁
 #!desc=解锁付费内容并调用SenPlayer打开
-#!category=Private
+#!category=Enhancements
 
 [MITM]
 hostname = %APPEND% api.bare.live
